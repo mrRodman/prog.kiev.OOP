@@ -37,5 +37,7 @@ public class Main {
         board.removeShape(2);
         board.removeShape(2);
         board.print();
+        
+        System.out.println(board.getAreas());
     }
 }
