@@ -3,6 +3,9 @@ package homework2;
 public class Board {
     private Shape[] shapes = new Shape[4];
 
+    public Board() {
+    }
+
     public void addShape(Shape shape) {
         for (int i = 0; i < shapes.length; i++) {
             if (shapes[i] == null) {
@@ -31,5 +34,15 @@ public class Board {
                 System.out.printf("index %d %s\n", i,shapes[i].toString());
             }
         }
+    }
+
+    public double getAreas() {
+        double sum = 0;
+        for (int i = 0; i < shapes.length; i++) {
+            if (shapes[i] != null)
+                sum += shapes[i].getArea();
+        }
+
+        return sum;
     }
 }
