@@ -29,10 +29,14 @@ public class Group {
 	}
 	
 	public void removeStudentByIndex (int index) {
-		if (group[index] == null)
-			System.err.println("This place is already empty!");
-		else
-			group[index] = null;
+		try {
+			if (group[index] == null)
+				System.err.println("This place is already empty!");
+			else
+				group[index] = null;
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Type valid index!");
+		}
 	}
 
 	/**
