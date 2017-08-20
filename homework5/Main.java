@@ -22,10 +22,5 @@ public class Main {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		String as = "asdsd, ad asd,das";
-		as = as.replaceAll("\\W", "123");
-		System.out.println(as);
-
 	}
 }
