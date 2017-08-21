@@ -22,5 +22,27 @@ public class Main {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		Group group = new Group();
+		group.addStudent(new Student("asd", 20, 4.0));
+		group.addStudent(new Student("qwe", 24, 5.0));
+		group.addStudent(new Student("fgh", 36, 3.0));
+		
+		File outStudent = new File("e:/1.xls");
+		try {
+			group.saveGroupToFile(outStudent);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		group.groupFlush();
+		File inStudent = new File("e:/1.xls");
+		try {
+			group.receiveGroupFromFile(inStudent);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(group.toString());
 	}
 }
