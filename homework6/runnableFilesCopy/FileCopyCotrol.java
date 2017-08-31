@@ -14,8 +14,6 @@ public class FileCopyCotrol {
 
 	public static String[] getAbsoluteSources(String source) {
 		String[] fileList = Paths.get(source).toFile().list();
-		
-		System.out.println(Arrays.toString(fileList));
 		String[] absoluteSources = new String[fileList.length];
 		
 		for (int i = 0; i < absoluteSources.length; i++) {
