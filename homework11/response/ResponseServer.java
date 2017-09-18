@@ -9,10 +9,11 @@ import java.net.Socket;
 public class ResponseServer implements Runnable{
     private Socket soc;
     private Thread thread;
-    private int numberOfResponse = 0;
+    private int numberOfRequest;
 
-    public ResponseServer(Socket soc) {
+    public ResponseServer(Socket soc, int numberOfRequest) {
         this.soc = soc;
+        this.numberOfRequest = numberOfRequest;
         thread = new Thread(this);
         thread.start();
     }
@@ -37,8 +38,8 @@ public class ResponseServer implements Runnable{
 
     private String createResponse() {
         StringBuilder response = new StringBuilder();
-        response.append("Number of rec " + ++numberOfResponse);
-        response.append("OS: ");
+        response.append("Number of rec " + numberOfRequest);
+        response.append(" OS: ");
         response.append(System.getProperty("os.name"));
         response.append("\n" + "free memory: ");
         response.append(Runtime.getRuntime().freeMemory());
