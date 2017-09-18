@@ -27,8 +27,8 @@ public class ResponseServer implements Runnable{
 
             byte[] recv = new byte[is.available()];
             is.read(recv);
-
-            pw.print(createResponse());
+            String response = createResponse();
+            pw.print(response);
             pw.flush();
         } catch (IOException e) {
                  e.printStackTrace();
@@ -37,7 +37,6 @@ public class ResponseServer implements Runnable{
 
     private String createResponse() {
         StringBuilder response = new StringBuilder();
-
         response.append("Number of rec " + ++numberOfResponse);
         response.append("OS: ");
         response.append(System.getProperty("os.name"));
@@ -50,6 +49,10 @@ public class ResponseServer implements Runnable{
         response.append("\n" + "total memory: ");
         response.append(Runtime.getRuntime().totalMemory());
 
-        return response.toString();
+        String res = "HTTP/1.1 200 OK\r\n" + "Server: My_Server\r\n" +
+                "Content-Type: text/html\r\n"+ "Content-Length: " + "\r\n" +
+                "Connection: close\r\n\r\n";
+        res += "<html><head></head><body>" + response.toString() +"</body></html>";
+        return res;
     }
 }
